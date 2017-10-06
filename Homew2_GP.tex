@@ -1,0 +1,111 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{comment}  
+\usepackage{lipsum} 
+\usepackage{fullpage} 
+
+\begin{document}
+
+  \noindent
+\large\textbf{ASCI/AGRO 931} \hfill \textbf{Name: Gerardo Mamani} \\
+\normalsize Homework 2 \hfill  \\
+Due Friday, September 15, at 8am \hfill 
+
+\begin{enumerate}
+
+\item (12 pts) A large, ideal population is divided into two subpopulations:  Subpop1 = 2
+00 lines where N = 25 in each line, and Subpop2 = 20 lines where N = 250 in each. \\
+
+Determine if each statement is  True or False and explain the reasoning behind your answer.
+
+\subitem a. If the two subpopulations are maintained at the same size each generation (N = 25 and N = 250) and random mating occurs, the expected variance in allele frequency across lines is greater for Subpop1 than for Subpop2. \textbf{True} or False
+
+\[V(p)=\frac{p_{0}q_{0}}{2N}\]
+
+Assume $p$ and $q$ across lines are the same in each subpopulation, therefore the difference in variance is dependent upon $N$.
+\[Var(p) = \frac{1}{50} = 0.2\]
+\[Var(p) = \frac{1}{500} = 0.002\]
+
+Variance increases with smaller $N$ due to drift.
+
+\item A species manager is trying to decide how to maximize effective population size in subpopulation 1. He is considering either breeding 20 females and 5 males each generation (randomly mating), or keeping 15 females and 10 males each generation by choosing one female from each dam and one male from each sire. In the end, he decides to choose the former, and keeps 20 females and 5 males selected at random each generation. By doing so, he maximizes Ne. True or \textbf{False}.
+
+First situation : \[N_e=\frac{4N_mN_f}{(N_m + N_f)}=\frac{4\times 20 \times 6}{20 + 5}= 16\]
+Second situation : \[N_e=\frac{16(N_m)(N_f)}{(N_m) + 3(N_f)}=\frac{4\times 10 \times 15}{10 + 3(15)}= 43.64\]
+
+The manager is better off keeping fewer females 15 with 10 males and minimizing variance in family size by choosing only one daughter from each dam and one son from each sire to perpetuate the population. The effective population size for that scenario is nearly three times that of the other option.
+
+\item Consider the case that an environmental change resulted in A1 having reduced fitness with a
+selection coefficient(s) of 0.02. Now, considering the options again (20 females and 5 males
+mating at random, or 15 females and 10 males each representing one dam and one sire,
+respectively). Under this selection pressure, allele A1 is more likely to be maintained in the
+population with 15 females and 10 males than in the population with 20 females and 5 males.\\
+
+True or \textbf{False}
+
+An allele is selectively neutral if \(N_e<\frac{1}{2}\). This is based on the fact that a neutral allele will be carried on in a population by chance at a rate of \(\frac{1}{2}N_e\) (random sampling).\\
+
+Using the $N_e$ found previously, $N_es$ for each population is:\\
+15 female x 10 male: \(43.64 \times 0.02 = 0.8728\)\\
+20 female x 5 male: \(16 \times 0.02 = 0.32\) \\
+
+As \(0.32 < 0.5\), in the population with 20 females and 5 males, even though the allele has a selective disadvantage it is still acting as a neutral allele and may be carried on by chance. In the population with larger $N_e$, the selective disadvantage is relatively high and the probability of it being passed on is less than if it were neutral.
+
+\item (13 pts) Consider a large population of mice. The frequency of a neutral allele, C1, in this population is 0.23. This large population is subdivided into 60 lines each consisting of 22 pair of parents. Random mating within each line proceeds for a total of 10 generations.\\
+
+\subitem a) What level of inbreeding ($F$) do you expect in a single line at \(t = 10\)? Assume the original, large colony had no initial inbreeding.
+
+\[F_t=1-(1-\frac{1}{2N})^t\]
+\[F_{10}=1-(1-\frac{1}{2 \times 44})^{10}\]
+\[F_{10}=0.1079977\]
+
+\subitem b) What is the expected variation in the frequency of C1 among lines?
+
+\[V=pqF_t\]
+\[V=0.23 \times 0.77 \times 0.1079977\]
+\[V=0.01912627\]
+
+\subitem c) We all know it's silly to think that a colony of laboratory mice isn't inbred! How much greater would you expect F to be in the first generation of progeny if the initial population were 5\% inbred rather than assuming the founders were unrelated?
+
+Assuming no inbreeding in the founders 
+
+\[F_1=\frac{1}{2N}=0.0114\]
+
+If the founders were 5\% inbred $(F = 0.05)$ the initial inbreeding is accounted for by adding \(F_0\) into our equation.
+
+\[F_{1}=\frac{1}{2N} + (1-\frac{1}{2N})F_{t-1}\]
+\[F_{1}=\frac{1}{88} + (1-\frac{1}{88})0.05\]
+\[F_{1}=0.0114 +  0.0494 = 0.0608\]
+The difference is: \[0.0608 - 0.0144 = 0.0494\]
+
+\subitem d) Consider that the lines are kept separate and maintained through random mating until C1 either becomes fixed or lost within each line. How many of the 60 lines do we expect to become fixed (freq(C1)=1) for C1? How many of the 60 lines do we expect to lose C1 (freq(C1)=0)?
+
+\[Pr_{fixed} = p_0 = 0.23 \]
+\[Pr_{lost} = q_0 = 0.77\]
+
+Across lines \(0.23 \times 60 = 13.8\) will become fixed for the p allele (C1).
+\(0.77 \times 60 = 46.2\) will become fixed for the q allele (lose C1).
+
+\subitem e) Given the initial frequency of C1, what do you expect the genotype frequency of the C1C1 homozygote to be across samples (in the whole population) at generation t=10?
+
+\[F_{C1C1}= p_0^2 + V(p)\]
+\[F_{C1C1}= (0.23)(0.23) + 0.0192 \]
+\[F_{C1C1}= 0.0721 \]
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+\end{document}
