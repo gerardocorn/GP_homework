@@ -1,0 +1,147 @@
+---
+title: "Anexo Homework 4"
+author: "Gerardo Mamani"
+date: "10/13/2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1
+
+```{r, comment=NA}
+pedigree<-read.table(header=T, text = 'ID sire dam gener
+                                Lord_Raglan 0 0 1
+                                Mistletoe Lord_Raglan 0 2
+                                Champion_of_England 0 0 3
+                                Duchess_of_Gloster Lord_Raglan 0 2
+                                The_Czar Lord_Raglan 0 2
+                                Mimulus Champion_of_England Mistletoe 3
+                                Grand_Duke_Gloster Champion_of_England Duchess_of_Gloster 3
+                                Carmine The_Czar 0 3
+                                Royal_Duke_Gloster Grand_Duke_Gloster Mimulus 4
+                                Princess_Royal Champion_of_England Carmine 4
+                                Roan_Gauntlet Royal_Duke_Gloster Princess_Royal 5 ')
+                                
+pedigree
+```
+
+### Recoding the pedigree names by numbers
+
+Id   | code     
+---- | ---- 
+Lord Raglan    | 1   |       
+Mistletoe     | 2            
+Champion of England    | 3       
+Duchess of Gloster    | 4       
+The Czar    | 5    
+Mimulus    | 6      
+Grand Duke Gloster    | 7      
+Carmine    | 8    
+Royal Duke Gloster    | 9      
+Princess Royal    | 10     
+Roan Gauntlet    | 11      
+
+### Working with pedigree recoded
+
+```{r}
+pedigree<-read.table(header=T, text = 'Id sire dam gen
+                                       1	0	0	1
+                                       2	1	0	2
+                                       3	0	0	2
+                                       4	1	0	2
+                                       5	1	0	2
+                                       6	3	2	3
+                                       7	3	4	3
+                                       8	5	0	3
+                                       9	7	6	4
+                                       10	3	8	4
+                                       11	9	10 5 ')
+               
+```
+
+### Using synbreed package
+
+```{r}
+library(synbreed)
+pedigree <- create.pedigree(pedigree$Id,pedigree$sire,pedigree$dam,pedigree$gen,unknown=c('Id','0'))
+```
+
+```{r, warning=NA, comment=NA}
+plot(pedigree)
+```
+\newpage
+```{r, comment=NA}
+A <- kin(pedigree,ret="add")
+round(A,5)
+```
+
+
+\newpage
+
+## Question 3
+
+### First case, when parents of individual B are full-siblings relative
+
+```{r}
+ped3a<-read.table(header=T, text = 'Id sire dam ger
+                                     M	0	0	1
+                                     N  0 0 1  
+                                     X	M	N	2
+                                     Y	M	N	2
+                                     A	0	0	3
+                                     B	X	Y	3
+                                     C	A	B	4
+                                     D	A	B	4
+                                     E	C	D	5 ')
+               
+```
+
+```{r, comment=NA}
+library(synbreed)
+ped3a <- create.pedigree(ped3a$Id,ped3a$sire,ped3a$dam,ped3a$ger,unknown=c('Id','0'))
+ped3a
+```
+
+```{r, comment=NA, warning=TRUE}
+plot(ped3a)
+```
+
+\newpage
+```{r, comment=NA}
+A3a <- kin(ped3a,ret="add")
+round(A3a,5)
+```
+
+### Second case, when the parents of B are unrelated
+
+```{r cars}
+ped3b<-read.table(header=T, text = 'Id sire dam ger
+                                     X	0	0	1
+                                     Y	0	0	1
+                                     B	X	Y	2
+                                     A	0	0	2
+                                     C	A	B	3
+                                     D	A	B	3
+                                     E	C	D	4')
+```
+
+```{r, comment=NA}
+library(synbreed)
+ped3b <- create.pedigree(ped3b$Id,ped3b$sire,ped3b$dam,ped3b$ger,unknown=c('Id','0'))
+ped3b
+```
+
+\newpage
+```{r, comment=NA, message=FALSE}
+plot(ped3b)
+```
+
+```{r, comment=NA}
+A3b <- kin(ped3b,ret="add")
+round(A3b,5)
+```
+
+
