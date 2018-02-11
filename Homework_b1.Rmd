@@ -9,7 +9,6 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 ### 1. A bi-allelic locus affects oil content (\%) in rye with the following genotypic values: 
 
 ### A1A1: 9.0\% A1A2: 8.9\% A2A2: 8.0\%. 
