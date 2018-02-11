@@ -1,0 +1,138 @@
+---
+title: "ASCI/AGRO 931 Population Genetics"
+author: "Homework IV, Fall 2017"
+date: "12/06/2017"
+output: pdf_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+1 Assume a herd of 1,000 beef cattle whebery both birth weight and calving difficulty scores (numerical score where 1 means no assistance was needed at birth and 5 means extensive assistance was needed due to dystocia) are recorded on all offspring. The genetic correlation between these two traits is 0.6. The additive genetic variance for birth weight and calving difficulty is 7.0 and 0.15, respectively. The narrow sense heritability for birht weight and calving difficulty is 0.34 and 0.29, respectively. The enviromenta covariance is 0.40.<br>
+
+a. What is the phenotypic correlation between these two traits?  (5 pts.)
+
+$$
+\begin{aligned}
+ h^2&=\frac{\sigma^2_a}{\sigma^2_p}\\
+ \sigma^2_p&=\frac{\sigma^2_a}{h^2}
+\end{aligned}
+$$
+Calculating enviromental standard deviation for birth weight (BW)
+
+$$
+\begin{aligned}
+\sigma^2_{pBW}&=\frac{7.0}{0.34}=20.58824 \\
+\sigma^2_{eBW}&=\sigma^2_{pBW}-\sigma^2_{aBW} \\
+\sigma^2_{eBW}&=20.58824 - 7.0  \\
+\sigma^2_{eBW}&= 13.58824  \\
+\sigma_{eBW} &= 3.686223 
+\end{aligned}
+$$
+
+Calculating enviromental standard deviation for calving difficulty (CAL)
+
+$$
+\begin{aligned}
+    \sigma^2_{pCAL}&=\frac{0.15}{0.29}=0.5172414\\
+    \sigma^2_{eCAL}&=\sigma^2_{pCAL}-\sigma^2_{aCAL}\\
+    \sigma^2_{eCAL}&=0.5172414-0.15 \\
+    \sigma^2_{eCAL}&= 0.3672414\\
+    \sigma_{eCAL}&= 0.6060045 
+\end{aligned}
+$$
+Calculating the enviromental correlation 
+
+$$
+\begin{aligned}
+r_e&=\frac{Cov_{eBW.CAL}}{\sqrt{\sigma_{eBW}^2\sigma_{eCAL}^2}}\\
+r_e&=\frac{0.40}{\sqrt{13.5882 \times 0.3672414}} \\
+r_e&=0.1790619
+\end{aligned}
+$$
+Calculating the phenotypic correlation 
+
+$$
+\begin{aligned}
+Cov_P&=r_p\sigma_{pBW}\sigma_{pCAL} \\
+Cov_P&=Cov_A + Cov_E \\
+Cov_P&=r_a\sigma_{aBW}\sigma_{aCAL} + r_e\sigma_{eBW}\sigma_{eCAL}  \\
+Cov_P&=0.6 \times \sqrt{7.0} \times \sqrt{0.15} + 0.1790616 \times 3.686223 \times  0.6060045  \\
+Cov_P&=1.014817 \\
+r_p&=\frac{Cov_{pBW.CAL}}{\sqrt{\sigma_{pBW}^2\sigma_{pCAL}^2}} \\
+r_p&=\frac{1.014817}{\sqrt{20.58824 \times 0.5172414}} \\
+r_p&= \textbf{0.3109793} \\
+\end{aligned}
+$$
+b. what is the selection response for calving difficulty if the selection intensity equals 2.40? (5 pts)
+
+$$
+\begin{aligned}
+R_{CAL}&=ih_{CAL}\sigma_{aCAL}   \\
+R_{CAL}&=2.40 \times \sqrt{0.29} \times \sqrt{0.15}\\
+R_{CAL}&=\textbf{0.5005597 score}
+\end{aligned}
+$$
+c. Assuming the same selection intensity, what is the correlated response (CR) for calving difficulty if direct selection is applied to birth weight? (5 pts.)
+
+Calculating response for birth weight (BW)
+
+$$
+\begin{aligned}
+R_{BW}&=ih_{BW}\sigma_{aBW} \\
+R_{BW}&=2.40 \times \sqrt{0.34} \times \sqrt{7.0}\\
+R_{BW}&= 3.70254 kg
+\end{aligned}
+$$
+Calculating the correlated response
+
+$$
+\begin{aligned}
+b_{aCAL.BW} &= \frac{Cov_{aCAL.BW}}{\sigma^2_{aBW}} \\
+b_{aCAL.BW} &= \frac{r_{a.CAL.BW}\times\sigma_{aCAL}\times\sigma_{aBW}}{\sigma^2_{aBW}} \\
+b_{aCAL.BW} &= \frac{0.6 \times \sqrt{0.15} \times \sqrt{7.0 }}{7.0} \\
+b_{aCAL.BW} &= 0.087831 \\
+CR_{CAL}&=b_{aCAL.BW}R_{BW} \\
+CR_{CAL}&=0.087831 \times 3.70254 \\
+CR_{CAL}&= \textbf{0.3251978 score}
+\end{aligned}
+$$
+d. How much more efficient (or inefficient) is indirect selection on birth weight as compared to direct selection on calving difficulty in this population? (5 pts)
+
+$$
+\begin{aligned}
+Efficiency &= \frac{R_{CAL.indirect}}{R_{CAL.direct}} \\
+Efficiency &=\frac{0.3251978}{0.5005597} \\
+Efficiency &=0.6496684
+\end{aligned}
+$$
+
+\textbf{0.64 more inefficient}
+
+2 Assume a back-cross (first generation backcross) population of wheat that is genotyped and phenotyped for protein concentration. Using a two-tailed t-test, is there evidence of a QTL near this marker? The means, within-class standard deviation, and number of individuals per class are below. (5 pts.)
+
+ .  |Mean| SD | N  
+---| ---| ---|---
+Mm |  0.06  | 0.02  | 75
+mm | 0.08 | 0.03 | 65
+
+$$
+\begin{aligned}
+t &=\frac{\hat\mu_{Mm}-\hat\mu_{mm}}{SE(\hat\mu_{Mm}-\hat\mu_{mm})} \\ 
+t &=\frac{\hat\mu_{Mm}-\hat\mu_{mm}}{\sqrt{\frac{\sigma^2_{Mm}}{N_{Mm}}+ \frac{\sigma^2_{mm}}{N_{mm}}    }} \\
+t &=\frac{0.06-0.08}{\sqrt{\frac{0.02^2}{75}+ \frac{0.03^2}{65}    }} \\
+t &=-4.566795 \\
+df &= (75+65)-2 = 138
+\end{aligned}
+$$
+P=5.432471e-06, then there is evidence of a QTL near to marker
+
+
+\begin{flushright}
+
+Gerardo C. Mamani
+
+\end{flushright}
+
+
