@@ -19,9 +19,9 @@ knitr::opts_chunk$set(echo = TRUE)
 #### a. Given these genotypic values, what are the values of a and d? 
 
 mid-point = \((A_1A_1 + A_2A_2)/2 = 8.5\%\)  
-
-a = \(A_1A_1 - mid-point = 9.0\% - 8.5\% = 0.5\)  
-
+$$
+a = A_1A_1 - mid-point = 9.0\% - 8.5\% = 0.5  
+$$
 d = \(A_1A_2 - mid-point = 8.9\% - 8.5\% = 0.4\)  
 
 #### b. What is the population mean?
